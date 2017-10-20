@@ -1,0 +1,84 @@
+<html>
+<head>
+	<title>Sample Registration App - Report</title>
+	<!--to cut down on files submitted and because there are not many styles
+    I am including CSS at the top of the page. Typically this (and the JS below)
+    would be linked in from folders organized elsewhere in the app-->
+	<style>
+		body {
+			font-family: Arial;
+			font-size: 14px;
+			background-color: #eee;
+		}
+		.container {
+			border: 1px solid #999;
+			background-color: #fff;
+			margin: 0 auto;
+			padding: 20px;
+			margin:50px;
+
+		}
+		.report-table:nth-child(even) {
+			background-color: #eee;
+		}
+		.report-table {
+			margin-top: 20px;
+			border: 1px solid #999;
+			border-spacing:0;
+			border-collapse: collapse;
+		}
+		.report-table td,
+		.report-table th {
+			padding: 5px;
+			font-family: Arial;
+			font-size: 14px;
+			border: 1px solid #999;
+		}
+		.report-table th {
+			background-color: #28bff1;
+		}
+		.event-title {
+			color: #1ba504;
+			font-weight:bold;
+		}
+	</style>
+</head>
+	<body>
+	  <div class="container">
+		<h1>Registration Report</h1>
+		  <p>Below is a report showing who has signed up for the <span class="event-title">Greatest Event In The World</span>!</p>
+
+		  <table class="report-table">
+			  <thead>
+			  <tr>
+				  <th>First Name</th>
+				  <th>Last Name</th>
+				  <th>Address 1</th>
+				  <th>Address 2</th>
+				  <th>City</th>
+				  <th>State</th>
+				  <th>ZIP Code</th>
+				  <th>Country</th>
+				  <th>Date</th>
+			  </tr>
+			  </thead>
+			  <tbody>
+
+			  <tr th:each="reg : ${allRegs}">
+				  <td th:text="${reg.firstName}"></td>
+				  <td th:text="${reg.lastName}"></td>
+				  <td th:text="${reg.address1}"></td>
+				  <td th:text="${reg.address2}"></td>
+				  <td th:text="${reg.city}"></td>
+				  <td th:text="${reg.state}"></td>
+				  <td th:text="${reg.zip}"></td>
+				  <td th:text="${reg.country}"></td>
+				  <td th:text="${#dates.format(reg.regDate, 'yyyy-MM-dd HH:mm')}"></td>
+			  </tr>
+
+			  </tbody>
+		  </table>
+
+	  </div>
+	</body>
+</html>
